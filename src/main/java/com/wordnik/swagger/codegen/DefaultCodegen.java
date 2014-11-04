@@ -834,8 +834,10 @@ public class DefaultCodegen {
     public String sanitize(String source) {
         if (source != null) {
             String san = source.replace("\n", "");
+            san = san.replace("\r", "");
+            san = san.replace("\\", "\\\\");
             san = san.replace("\"", "\\\"");
-//            san = org.apache.commons.lang.StringEscapeUtils.escapeJava(san);
+            san = san.replace("\'", "\\\'");
             return san;
         }
         return null;
