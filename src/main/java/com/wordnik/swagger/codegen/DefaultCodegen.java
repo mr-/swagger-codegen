@@ -111,7 +111,7 @@ public class DefaultCodegen {
   }
 
   public String toModelFilename(String name) {
-    return name;
+    return initialCaps(name);
   }
 
   public String toVarName(String name) {
