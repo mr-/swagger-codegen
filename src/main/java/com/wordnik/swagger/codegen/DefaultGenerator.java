@@ -70,7 +70,9 @@ public class DefaultGenerator implements Generator {
 
       // models
       Map<String, Model> definitions = swagger.getDefinitions();
-      for(String name: definitions.keySet()) {
+        if (definitions == null)
+            definitions = Collections.emptyMap(); //TODO: if that is the case, need to change api.mustache to not include the models..
+        for(String name: definitions.keySet()) {
         Model model = definitions.get(name);
         Map<String, Model> modelMap = new HashMap<String, Model>();
         modelMap.put(name, model);
