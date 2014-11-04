@@ -321,7 +321,7 @@ public class DefaultCodegen {
       m.name = escapeReservedWord(name);
     else
       m.name = name;
-    m.description = model.getDescription();
+    m.description = sanitize(model.getDescription());
     m.classname = toModelName(name);
     m.classVarName = toVarName(name);
     m.modelJson = Json.pretty(model);
@@ -418,7 +418,7 @@ public class DefaultCodegen {
 
     property.name = toVarName(name);
     property.baseName = name;
-    property.description = p.getDescription();
+    property.description = sanitize(p.getDescription());
     property.getter = "get" + initialCaps(name);
     property.setter = "set" + initialCaps(name);
     property.example = p.getExample();
@@ -528,8 +528,8 @@ public class DefaultCodegen {
     }
     op.path = path;
     op.operationId = operationId;
-    op.summary = operation.getSummary();
-    op.notes = operation.getDescription();
+    op.summary = sanitize(operation.getSummary());
+    op.notes = "empty"; //sanitize(operation.getDescription());
     op.tags = operation.getTags();
 
     Response methodResponse = null;
@@ -644,7 +644,7 @@ public class DefaultCodegen {
       for(Parameter param : parameters) {
         CodegenParameter p = new CodegenParameter();
         p.baseName = param.getName();
-        p.description = param.getDescription();
+        p.description = sanitize(param.getDescription());
         p.required = param.getRequired();
         
         if(param instanceof SerializableParameter) {
@@ -829,4 +829,15 @@ public class DefaultCodegen {
     opList.add(co);
     co.baseName = tag;    
   }
+
+
+    public String sanitize(String source) {
+        if (source != null) {
+            String san = source.replace("\n", "");
+            san = source.replace("\"", "\\\"");
+            // san = org.apache.commons.lang.StringEscapeUtils.escapeXml(san);
+            return san;
+        }
+        return null;
+    }
 }
