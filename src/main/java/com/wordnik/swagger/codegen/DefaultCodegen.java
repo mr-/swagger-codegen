@@ -529,7 +529,7 @@ public class DefaultCodegen {
     op.path = path;
     op.operationId = operationId;
     op.summary = sanitize(operation.getSummary());
-    op.notes = "empty"; //sanitize(operation.getDescription());
+    op.notes = sanitize(operation.getDescription()); //something is wrong here..
     op.tags = operation.getTags();
 
     Response methodResponse = null;
@@ -834,8 +834,8 @@ public class DefaultCodegen {
     public String sanitize(String source) {
         if (source != null) {
             String san = source.replace("\n", "");
-            san = source.replace("\"", "\\\"");
-            // san = org.apache.commons.lang.StringEscapeUtils.escapeXml(san);
+            san = san.replace("\"", "\\\"");
+//            san = org.apache.commons.lang.StringEscapeUtils.escapeJava(san);
             return san;
         }
         return null;
