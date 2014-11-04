@@ -1,10 +1,12 @@
 Changes to make the codegen saner.
 
 Steps to use:
-* in swagger-codegen: 1. mvn package
-                      2. ./bin/genServer -s spec.json -t targetDir
-* in targetDir: 1. mvn package
-                2. mvn jetty-run
+* in swagger-codegen: 
+    1. mvn package
+    2. ./bin/genServer -s spec.json -t targetDir
+* in targetDir: 
+    1. mvn package
+    2. mvn jetty-run
 
 # Swagger Code Generator
 
