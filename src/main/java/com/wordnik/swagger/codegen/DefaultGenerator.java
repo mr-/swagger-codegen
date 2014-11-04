@@ -80,7 +80,7 @@ public class DefaultGenerator implements Generator {
         allModels.add(((List<Object>)models.get("models")).get(0));
         for(String templateName : config.modelTemplateFiles().keySet()) {
           String suffix = config.modelTemplateFiles().get(templateName);
-          String filename = config.modelFileFolder() + File.separator + config.toModelFilename(name) + suffix;
+          String filename = config.modelFileFolder() + File.separator + DefaultCodegen.initialCaps(config.toModelFilename(name)) + suffix;
           String template = readTemplate(config.templateDir() + File.separator + templateName);
           Template tmpl = Mustache.compiler()
             .withLoader(new Mustache.TemplateLoader() {

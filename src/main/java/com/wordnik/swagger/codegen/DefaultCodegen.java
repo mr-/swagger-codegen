@@ -292,7 +292,7 @@ public class DefaultCodegen {
     return datatype;
   }
 
-  public String initialCaps(String name) {
+  public static String initialCaps(String name) {
     return Character.toUpperCase(name.charAt(0)) + name.substring(1);
   }
 
