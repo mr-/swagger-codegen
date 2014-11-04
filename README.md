@@ -1,6 +1,6 @@
-Changes to make the codegen saner.
+# Changes to make the codegen saner.
 
-Steps to use:
+## Steps to use:
 * in swagger-codegen: 
     1. mvn package
     2. ./bin/genServer -s spec.json -t targetDir
