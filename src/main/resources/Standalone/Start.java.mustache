@@ -22,7 +22,7 @@ public class Start {
         Server server = new Server();
 
         ServerConnector connector = new ServerConnector(server);
-        connector.setPort(9999);
+        connector.setPort(8080);
 
         HttpConfiguration https = new HttpConfiguration();
         https.addCustomizer(new SecureRequestCustomizer());
@@ -42,6 +42,7 @@ public class Start {
         while (true) {
             try {
                 server.start();
+                System.out.println("The server is now running at port 8080");
                 break;
             } catch (Exception e) {
                 e.printStackTrace();

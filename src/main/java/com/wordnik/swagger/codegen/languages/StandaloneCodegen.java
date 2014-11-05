@@ -38,11 +38,8 @@ public class StandaloneCodegen extends JavaClientCodegen implements CodegenConfi
     supportingFiles.add(new SupportingFile("distribution.xml.mustache", "", "distribution.xml"));
     supportingFiles.add(new SupportingFile("ApiException.mustache",
       (sourceFolder + File.separator + apiPackage).replace(".", File.separator), "ApiException.java"));
-    System.out.println(sourceFolder + File.separator);
-
     supportingFiles.add(new SupportingFile("Start.java.mustache",
       (sourceFolder + File.separator + "com.wordnik").replace(".", File.separator), "Start.java"));
-
     supportingFiles.add(new SupportingFile("ApiOriginFilter.mustache",
       (sourceFolder + File.separator + apiPackage).replace(".", File.separator), "ApiOriginFilter.java"));
     supportingFiles.add(new SupportingFile("ApiResponseMessage.mustache",

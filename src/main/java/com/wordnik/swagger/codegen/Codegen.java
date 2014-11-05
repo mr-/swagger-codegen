@@ -69,10 +69,8 @@ public class Codegen extends DefaultGenerator {
         return new JavaClientCodegen();
     else if("jaxrs".equals(name))
       return new JaxRSServerCodegen();
-    else if("Standalone".equals(name)) {
-        System.out.println("Using standalone..");
+    else if("Standalone".equals(name))
         return new StandaloneCodegen();
-    }
     else if("nodejs".equals(name))
       return new NodeJSServerCodegen();
     else if("scalatra".equals(name))
