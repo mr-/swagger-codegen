@@ -177,6 +177,17 @@ public class DefaultGenerator implements Generator {
     catch (Exception e) {
       e.printStackTrace();
     }
+
+    System.out.println("Got outputfolder: " + config.outputFolder());
+      File srcFolder  = new File("src/main/resources/swagger-ui");
+      File destFolder = new File(config.outputFolder() + "/src/main/webapp/");
+      try {
+          System.out.println("trying to copy " + srcFolder.getAbsolutePath() + " to " + destFolder.getAbsolutePath() );
+          org.apache.commons.io.FileUtils.copyDirectoryToDirectory(srcFolder, destFolder);
+      }
+      catch (Exception e) {
+          e.printStackTrace();
+      }
   }
 
   public Map<String, List<CodegenOperation>> processPaths(Map<String, Path> paths) {
