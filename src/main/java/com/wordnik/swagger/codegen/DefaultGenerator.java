@@ -179,7 +179,7 @@ public class DefaultGenerator implements Generator {
     }
 
     System.out.println("Got outputfolder: " + config.outputFolder());
-      File srcFolder  = new File("src/main/resources/swagger-ui");
+      File srcFolder  = new File("src/main/resources/apidoc");
       File destFolder = new File(config.outputFolder() + "/src/main/webapp/");
       try {
           System.out.println("trying to copy " + srcFolder.getAbsolutePath() + " to " + destFolder.getAbsolutePath() );

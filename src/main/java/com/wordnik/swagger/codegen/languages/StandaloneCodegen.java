@@ -48,8 +48,11 @@ public class StandaloneCodegen extends JavaClientCodegen implements CodegenConfi
       (sourceFolder + File.separator + apiPackage).replace(".", File.separator), "NotFoundException.java"));
     supportingFiles.add(new SupportingFile("web.mustache", 
       ("src/main/webapp/WEB-INF"), "web.xml"));
+    supportingFiles.add(new SupportingFile("welcome.html.mustache",
+              ("src/main/webapp"), "welcome.html"));
 
-    languageSpecificPrimitives = new HashSet<String>(
+
+      languageSpecificPrimitives = new HashSet<String>(
       Arrays.asList(
         "String",
         "boolean",
