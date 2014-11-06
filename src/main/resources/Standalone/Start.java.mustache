@@ -51,10 +51,12 @@ public class Start {
                 System.out.println("Got " + s);
 
                 if (s.equals("/")) {
-                    resource = getClass().getClassLoader().getResource("welcome.html");
-                    httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-                    org.apache.commons.io.IOUtils.copy(resource.openStream(), httpServletResponse.getOutputStream());
+                    httpServletResponse.sendRedirect("http://localhost:8002/apidoc/index.html");
+//                    resource = getClass().getClassLoader().getResource("welcome.html");
+//                    httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+//                    org.apache.commons.io.IOUtils.copy(resource.openStream(), httpServletResponse.getOutputStream());
                     System.out.println("got OK: " + s);
+                    System.out.println("redirecting..");
                     ((Request) request).setHandled(true);
                 }
                 else if (s.startsWith("/apidoc/")) {
