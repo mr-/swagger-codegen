@@ -43,17 +43,17 @@ ags="$@ com.wordnik.swagger.codegen.Codegen -i $SOURCEFILE -l Standalone -o $DES
 echo "Generating server..."
 echo "java -cp $APP_DIR/target/*:$APP_DIR/target/lib/* $ags"
 
-java -cp $APP_DIR/target/*:$APP_DIR/target/lib/* $ags &> /dev/null
+java -cp $APP_DIR/target/*:$APP_DIR/target/lib/* $ags &> errJava.log 
 
 cd $DESTDIR
 echo "Compiling server..."
-mvn package &> /dev/null
+mvn package &>> errMvn.log 
 cd ..
 
 
 if [ ! -f "$DESTDIR/target/swagger-server-1.0.0-standalone.jar" ] ; then
-    echo "$DESTDIR/target/swagger-server-1.0.0-standalone.jar does not exist. Something went wrong. Call me"
+    echo "$DESTDIR/target/swagger-server-1.0.0-standalone.jar does not exist. Something went wrong. Call me or consult err*.log"
     exit
 fi
 
-cp "$DESTDIR/target/swagger-server-1.0.0-standalone.jar" .
+mv "$DESTDIR/target/swagger-server-1.0.0-standalone.jar" .
