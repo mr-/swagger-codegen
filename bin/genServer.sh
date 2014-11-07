@@ -41,13 +41,13 @@ export JAVA_OPTS="${JAVA_OPTS} -XX:MaxPermSize=256M -Xmx1024M -DloggerPath=conf/
 ags="$@ com.wordnik.swagger.codegen.Codegen -i $SOURCEFILE -l Standalone -o $DESTDIR"
 
 echo "Generating server..."
-echo "java -cp $APP_DIR/target/*:$APP_DIR/target/lib/* $ags"
+#echo "java -cp $APP_DIR/target/*:$APP_DIR/target/lib/* $ags"
 
 java -cp $APP_DIR/target/*:$APP_DIR/target/lib/* $ags &> errJava.log 
 
 cd $DESTDIR
 echo "Compiling server..."
-mvn package &>> errMvn.log 
+mvn package &> errMvn.log 
 cd ..
 
 
